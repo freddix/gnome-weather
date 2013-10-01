@@ -1,19 +1,20 @@
 Summary:	GNOME weather
 Name:		gnome-weather
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://download.gnome.org/sources/gnome-weather/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	ee473f894a924fb75029fef284748d22
+Source0:	http://download.gnome.org/sources/gnome-weather/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	145e6c9cea9734e9e698347b04530acb
 URL:		https://live.gnome.org/Design/Apps/Weather
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+3-devel
+BuildRequires:	gobject-introspection-devel >= 1.38.0
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	pkg-config
 Requires(post,postun):	glib-gio-gsettings
+Requires:	gjs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libexecdir	%{_libdir}/gnome-weather
+%define		_libexecdir	%{_libdir}/org.gnome.Weather.Application
 
 %description
 GNOME weather.
@@ -34,7 +35,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}
+%find_lang org.gnome.Weather.Application
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,14 +46,17 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_gsettings_cache
 
-%files -f %{name}.lang
+%files -f org.gnome.Weather.Application.lang
 %defattr(644,root,root,755)
 %doc NEWS
 %attr(755,root,root) %{_bindir}/gnome-weather
 %dir %{_libexecdir}
 %attr(755,root,root) %{_libexecdir}/libgd.so
 %{_libexecdir}/girepository-1.0
+%{_datadir}/dbus-1/services/org.gnome.Weather.Application.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Weather.Application.gschema.xml
-%{_datadir}/gnome-weather
-%{_desktopdir}/gnome-weather.desktop
+%{_datadir}/gnome-shell/search-providers/org.gnome.Weather.Application.search-provider.ini
+%{_datadir}/org.gnome.Weather.Application
+%{_desktopdir}/org.gnome.Weather.Application.desktop
+%{_iconsdir}/hicolor/*/apps/org.gnome.Weather.Application.png
 
