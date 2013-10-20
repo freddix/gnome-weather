@@ -1,11 +1,11 @@
 Summary:	GNOME weather
 Name:		gnome-weather
-Version:	3.10.0
+Version:	3.10.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://download.gnome.org/sources/gnome-weather/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	145e6c9cea9734e9e698347b04530acb
+# Source0-md5:	4a4c2a938d51b746b9a8daa7eaf33dc9
 URL:		https://live.gnome.org/Design/Apps/Weather
 BuildRequires:	gobject-introspection-devel >= 1.38.0
 BuildRequires:	gtk+3-devel >= 3.10.0
