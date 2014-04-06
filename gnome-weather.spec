@@ -1,17 +1,17 @@
 Summary:	GNOME weather
 Name:		gnome-weather
-Version:	3.10.1
+Version:	3.12.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://download.gnome.org/sources/gnome-weather/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	4a4c2a938d51b746b9a8daa7eaf33dc9
+Source0:	http://download.gnome.org/sources/gnome-weather/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	fa4121882f2cc8d94e7fa8e3a79bce03
 URL:		https://live.gnome.org/Design/Apps/Weather
-BuildRequires:	gobject-introspection-devel >= 1.38.0
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	pkg-config
 Requires(post,postun):	glib-gio-gsettings
-Requires:	gjs
+Requires:	gjs >= 1.40.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}/org.gnome.Weather.Application
@@ -34,6 +34,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libexecdir}/libgd.la
 
 %find_lang org.gnome.Weather.Application
 
