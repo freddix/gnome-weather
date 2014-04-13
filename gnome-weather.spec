@@ -1,7 +1,7 @@
 Summary:	GNOME weather
 Name:		gnome-weather
 Version:	3.12.0
-Release:	1
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://download.gnome.org/sources/gnome-weather/3.12/%{name}-%{version}.tar.xz
@@ -58,7 +58,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.Weather.Application.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Weather.Application.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Weather.Application.search-provider.ini
-%{_datadir}/org.gnome.Weather.Application
+%dir %{_datadir}/org.gnome.Weather.Application
+%attr(755,root,root) %{_datadir}/org.gnome.Weather.Application/org.gnome.Weather.Application
+%dir %{_datadir}/org.gnome.Weather.Application/gir-1.0
+%{_datadir}/org.gnome.Weather.Application/gir-1.0/Gd-1.0.gir
+%{_datadir}/org.gnome.Weather.Application/org.gnome.Weather.Application.data.gresource
+%{_datadir}/org.gnome.Weather.Application/org.gnome.Weather.Application.src.gresource
+%{_datadir}/org.gnome.Weather.Application/package.js
+
 %{_desktopdir}/org.gnome.Weather.Application.desktop
 %{_iconsdir}/hicolor/*/apps/org.gnome.Weather.Application.png
 
